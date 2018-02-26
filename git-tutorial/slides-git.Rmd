@@ -1,0 +1,419 @@
+---
+title: "git tutorial"
+subtitle: "a gentle introduction"
+author: Lorenz Walthert (@lorenzwalthert)
+date: March 1, 2018
+output: ioslides_presentation
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+## Today's plan
+
+* first hour: Theory + group practice.
+* second hour: (optional participation): Training problems, general questions.
+* This is really just the basics.
+
+## What is git?
+
+* A version control system (VCS).
+* smart way of storing file histories.
+* Created to version the linux kernel.
+* builds a tree of all changes.
+* A change stored in the VCS = a commit.
+* Every commit has a hash as an id.
+
+```{r, echo=FALSE, out.width="650px"}
+knitr::include_graphics(here::here("git-tutorial/img/git-tree.png"))
+```
+
+## Inspecting differences
+
+
+```{r, echo=FALSE, out.width="750px"}
+knitr::include_graphics(here::here("git-tutorial/img/git-diff.png"))
+```
+
+
+## Basic workflow
+
+* workflow: change -> save -> add to index -> commit (-> push)
+* importatn: saved not = commited not = pushed
+
+```{r, echo=FALSE, out.width="750px"}
+knitr::include_graphics(here::here("git-tutorial/img/git-states.png"))
+```
+
+
+## Why git?
+
+Tell me why :-) 
+
+## Why git?
+* end your copy / paste / save code as backup workflow.
+
+```{r, echo=FALSE, out.width="650px"}
+knitr::include_graphics(here::here("git-tutorial/img/c-p-hell.png"))
+```
+
+* understand **what** and **why** you did something in restrospect.
+* collaborating with others.
+* restoring previous versions.
+* and more.
+
+## How can I use git?
+
+* local GUI (e.g. Rstudio git tab).
+
+```{r, echo=FALSE, out.width="250px"}
+knitr::include_graphics(here::here("git-tutorial/img/git-gui.png"))
+```
+
+* command line.
+
+```{r, echo=FALSE, out.width="350px"}
+knitr::include_graphics(here::here("git-tutorial/img/git-cmd.png"))
+```
+
+* web GUI (e.g. GitHub).
+
+## Pros and Cons
+
+* Rstudio git tab: + easy to learn, - limited functionality
+* command line: + very flexible, + "native git", - more
+  difficult to learn than other methods.
+* GitHub: + good collaboration / communication, - not
+  actual coding
+
+## git with RStudio (create project)
+
+* create new RStudio Project (otherwise you can't use the git GUI)
+* check "create git repository"
+* call it ethz-git-with-rstudio
+
+## git with RStudio (create files)
+
+* create a new R script.
+* put some example code there.
+* I suggest
+
+`add_two_numbers <- function(x, y) {`
+
+  `  sum(x, y)`
+
+`}`
+
+
+`add_numbers(1, 2)`
+
+* save file as `test-gui.R`
+
+## git with RStudio (add files)
+
+* have a look at the git tab 
+
+```{r, echo=FALSE}
+knitr::include_graphics(here::here("git-tutorial/img/rstudio-git.png")) 
+```
+
+## git with RStudio
+You have three files there: 
+
+* `ethz-git-with-rstudio.Rproj` (project settings) 
+* `.gitignore`
+* `test-gui.R`
+
+## Intermezzo: What is .gitigore?
+
+* A plain text file.
+* lists files / folders you want to ignore from being tracked by git, one line 
+  per file.
+* advanced stuff: removing file from git / complicated inclusion / exclusion 
+  rules.
+
+## git with RStudio (status of files)
+
+* yellow question mark: untracked by git.
+* blue "M": modified.
+* red "D": deleted.
+
+## git with RStudio (menu items)
+
+```{r, echo=FALSE, out.width="750px"}
+knitr::include_graphics(here::here("git-tutorial/img/rstudio-git-menu.png"))
+```
+
+Important for now:
+
+* Diff: compare working dir with HEAD
+* Commit: Add changes to tree.
+* clock: History (changelog)
+
+## git with RStudio (adding and committing)
+
+* check boxes of you files.
+* Inspect differences with "Diff".
+* Commit them.
+
+## Intermezzo: Good commits (messages)
+
+* Do you think "update test-gui.R" is a good commit message? Why / why not?
+
+## Intermezzo: Good commits (message)
+
+Example of good commit messages:
+* "add missing value analyis to script"
+* "remove unused code"
+
+## Intermezzo: Good commits (content)
+
+* make small commits. 
+* changes should be self-contained, minimally complete.
+* all changes introduced with a commit should be related to each other.
+
+
+## git with RStudio (adding and committing)
+
+* Review your commit (how?)
+
+## git with RStudio
+
+* Improve `add_two_numbers` to ignore missing input values (how?).
+* Commit it with a reasonable commit message.
+* Again, review your commit (how?).
+
+## from GUI to command line
+
+* repeat what we just did on the command line. 
+* but with a new repo.
+* can also mingle GUI and command line approache (that's what happens in 
+  practice).
+* will learn stuff we could not do with the GUI.
+
+## git with the command line (tips)
+
+* use tab to auto-complete file names.
+* use star (*) to refer to everyting.
+* I use `$` to refer to terminal commands.
+
+## git with the command line (intitialization)
+
+* create a new folder ethz-git-with-rstudio in your home directory.
+* navigate there with the command line.
+* `$git init`
+
+=> Other ways to create a repo: `$git clone`, see later.
+
+## git with the command line (adding files)
+
+* `$touch test.R` to create empty file.
+* add some text & save.
+* `$git status`
+
+## git with the command line (stage and commit)
+
+*`$git add test-cmd.R`
+* could also do `$git add *` to add all.
+* check the status (how?).
+* `$git commit -m "[commit message here]"`
+
+## git with the command line (review commits)
+
+* `$git log`
+* `$git log -p`
+* `$git log --stat`
+* etc.
+
+## Commit messages and descriptions
+
+* You now know: `$git commit -m "message"`
+* But you can also: `$git commit -m "[message]" -m "[description]"`
+* Idea behind description: More verbose and detailed comment on the commit.
+* If you need a long (potentially multi-line) description, use a text editor as
+  follows:
+* Open text editor for the commit message with `$git commit`
+ 
+## Intermezzo: Using a text editor
+
+* How many people have used a text editor like vim or emacs?
+* You can now edit the commit message.
+* To enter the `insert` mode, press `i`
+* First write the commit message, then leave one line blank and write a 
+ description.
+* When done, hit `ESC`
+* Hit `:` (probably `Shift + .` on your keyboard)
+* Then, type `wc` (for write and quit)
+* Type `cq` to cancel and quit.
+* Hit `ENTER` to confirm.
+
+We'll come back to that.
+
+## Commit messages and descriptions
+
+* If you are using the RStudio tab, you can also write the message on the first
+  line, then leave one line blank and write the description.
+
+## Remote repositories (basics)
+
+```{r, echo=FALSE, out.width = "750px"}
+knitr::include_graphics(here::here("git-tutorial/img/git-remotes.gif"))
+```
+
+* a remote repo is "just another copy" of a repo (potentially in a different
+  state).
+* remote not the same as a branch! 
+* Never mind about branches we will always use `master`
+* Different branches represent different trees (and can contain different 
+  commits).
+  
+## Remote repositories (basics)
+
+* clone: "Download" a whole repository.
+* push: Send your changes to a server.
+* pull: "Download" new changes from the server.
+
+## git with RStudio (menu items)
+
+```{r, echo=FALSE, out.width="750px"}
+knitr::include_graphics(here::here("git-tutorial/img/rstudio-git-menu.png"))
+```
+
+New important menu items: 
+
+* Pull .
+* Push.
+
+But where to push / pull from?
+
+## Remote repositories (basics)
+
+Two scenarios: 
+
+* You have a repo and want to push it somewhere.
+* There is a repo somewhere and you want to pull it.
+
+We'll use GitHub as the server that hosts our remote repository.
+
+## Remote repositories (GitHub)
+
+* Hosts code (essentially the .git folder).
+* Hosts issues / conversations / reference etc.
+* is a git GUI.
+* free account: All repos public (student exception)
+* alternative: Bitbucket (offers free private repos)
+
+Let's have a look: https://github.com/tidyverse/dplyr
+
+## Remote repositories (GitHub)
+
+Two scenarios:
+
+* There is a repo somewhere and you want to *pull* it.
+* You have a repo and want to *push* it somewhere.
+
+Either way, go to GitHub first.
+
+## Remote repositories (pull)
+
+* fork: Add a remote copy to yu GitHub account (without downloading)
+* clone your fork: "Download" your copy with `$git clone [url]`, e.g.
+  `$git clone github.com/lorenzwalthert/styler`
+
+## Remote repositories (push)
+
+* Go to github.com.
+* click "New Repository".
+* Follow the instructions by c/p into terminal.
+* reload github.com
+=> Success?
+
+## Remote repositories (push)
+
+* You just used `$git remote add [name of the remote] [url]`
+* Your remote is usually called `origin`
+* If there is a main repo that you forked before you cloned, it is usually called
+  it `upstream`
+* `git push --set-origin master` maps your `master` branch to the `master` in 
+  the remote branch and pushes the repo there.
+
+
+## GitHub
+
+You can 
+* open issues. 
+* open pull requets (ask the maintainer of a repo to pull your changes).
+* merge branches 
+* etc. 
+
+=> Self study.
+
+## Restoring previous versions
+
+* Soft version: Revert (= undo *a* commit) = add a new commit on top of the 
+  tree.
+* Hard version: Reset *to* a commit. Change your working diectory to a
+  state of the tree.
+
+
+## Soft version (= Revert)
+
+* every commit has an id (= hash)
+* see which commit has which hash with `$git log`
+* use `$git revert [hash]`
+* This will open your default text editor (probably VIM or VI by default).
+
+
+## Intermezzo: Using a text editor
+
+* You can now edit the commit message.
+* To enter the `insert` mode, press `i`
+* You can now edit the commit message.
+* When done, hit `ESC`
+* Hit `:` (probably `Shift + .` on your keyboard)
+* Then, type `wc` (for write and quit)
+* Type `cq` to cancel and quit.
+* Hit `ENTER` to confirm.
+
+## Soft version (= Revert)
+
+Done. See your changes (how?)
+
+## Hard version (=Reset)
+
+* every commit has an id (= hash).
+* see which commit has which hash with `$git log`
+* use `$git reset [hash] --hard` to reset a repo to that state.
+
+## Restoring previous versions
+
+* You can also discard all changes in your working directory and return to the
+  last commit you made: 
+* `$git reset HEAD --hard`.
+* In Rstudio git tab. Right click on file -> revert.
+
+## Undo a `$git reset`
+
+* Thank God you can.
+* `$git log` shows commits in your tree.
+* you can see all your actions (i.e. also commits you removed from your tree) 
+  with `$git reflog`.
+* You removed the second commit from your tree before when you used 
+  `$git reset`. So how can you restore the state at the second commit?
+
+## Undo a `$git reset`
+
+* find the hash with `$git reflog`.
+* use `$git reset [hash] --hard`
+
+## More to explore
+
+* `$git stash` / `$git stash pop` temporarily discard changes in working dir.
+* `$git merge` / `$git rebase`.
+* `$git branch` to switch between different branches.
+* `$git rebase -i`. Interactive rebase (reorder commit, squash them together).
+* `$git cherry-pick`. Add an arbitrary commit to your tree.
+* `$git tag`. Anchor commits with tags.
+* `$git diff` (between versions / between files). Hint: Configure a diff tool 
+  like merge diff.
