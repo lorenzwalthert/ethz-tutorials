@@ -20,7 +20,7 @@ knitr::opts_chunk$set(cache = TRUE)
 
 * A version control system (VCS).
 * smart way of storing file histories.
-* Created to version the linux kernel.
+* Created to version the Linux kernel.
 * builds a tree of all changes.
 * A change stored in the VCS = a commit.
 * Every commit has a hash as an id.
@@ -40,7 +40,7 @@ knitr::include_graphics(here::here("git-tutorial/img/git-diff.png"))
 ## Basic workflow
 
 * workflow: change -> save -> add to index -> commit (-> push)
-* importatn: saved not = commited not = pushed
+* important: saved not = committed not = pushed
 
 ```{r, echo=FALSE, out.width="750px"}
 knitr::include_graphics(here::here("git-tutorial/img/git-states.png"))
@@ -58,14 +58,14 @@ Tell me why :-)
 knitr::include_graphics(here::here("git-tutorial/img/c-p-hell.png"))
 ```
 
-* understand **what** and **why** you did something in restrospect.
+* understand **what** and **why** you did something in retrospect.
 * collaborating with others.
 * restoring previous versions.
 * and more.
 
 ## How can I use git?
 
-* local GUI (e.g. Rstudio git tab).
+* local GUI (e.g. RStudio git tab).
 
 ```{r, echo=FALSE, out.width="250px"}
 knitr::include_graphics(here::here("git-tutorial/img/git-gui.png"))
@@ -81,7 +81,7 @@ knitr::include_graphics(here::here("git-tutorial/img/git-cmd.png"))
 
 ## Pros and Cons
 
-* Rstudio git tab: + easy to learn, - limited functionality
+* RStudio git tab: + easy to learn, - limited functionality
 * command line: + very flexible, + "native git", - more
   difficult to learn than other methods.
 * GitHub: + good collaboration / communication, - not
@@ -149,7 +149,7 @@ Important for now:
 
 * Diff: compare working dir with HEAD
 * Commit: Add changes to tree.
-* clock: History (changelog)
+* clock: History (change log)
 
 ## git with RStudio (adding and committing)
 
@@ -164,7 +164,7 @@ Important for now:
 ## Intermezzo: Good commits (message)
 
 Example of good commit messages:
-* "add missing value analyis to script"
+* "add missing value analysis to script"
 * "remove unused code"
 
 ## Intermezzo: Good commits (content)
@@ -237,7 +237,7 @@ Example of good commit messages:
  
 ## Intermezzo: Using a text editor
 
-* How many people have used a text editor like vim or emacs?
+* How many people have used a text editor like vim or Emacs?
 * You can now edit the commit message.
 * To enter the `insert` mode, press `i`
 * First write the commit message, then leave one line blank and write a 
@@ -317,7 +317,7 @@ Either way, go to GitHub first.
 
 ## Remote repositories (pull)
 
-* fork: Add a remote copy to yu GitHub account (without downloading)
+* fork: Add a remote copy to your GitHub account (without downloading)
 * clone your fork: "Download" your copy with `$git clone [url]`, e.g.
   `$git clone github.com/lorenzwalthert/styler`
 
@@ -343,7 +343,7 @@ Either way, go to GitHub first.
 
 You can 
 * open issues. 
-* open pull requets (ask the maintainer of a repo to pull your changes).
+* open pull request (ask the maintainer of a repo to pull your changes).
 * merge branches 
 * etc. 
 
@@ -353,7 +353,7 @@ You can
 
 * Soft version: Revert (= undo *a* commit) = add a new commit on top of the 
   tree.
-* Hard version: Reset *to* a commit. Change your working diectory to a
+* Hard version: Reset *to* a commit. Change your working directory to a
   state of the tree.
 
 
@@ -391,7 +391,7 @@ Done. See your changes (how?)
 * You can also discard all changes in your working directory and return to the
   last commit you made: 
 * `$git reset HEAD --hard`.
-* In Rstudio git tab. Right click on file -> revert.
+* In RStudio git tab. Right click on file -> revert.
 
 ## Undo a `$git reset`
 
