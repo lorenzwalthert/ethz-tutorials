@@ -1,13 +1,16 @@
 ---
 title: "git tutorial"
-subtitle: "a gentle introduction"
-author: Lorenz Walthert (@lorenzwalthert)
-date: March 1, 2018
-output: ioslides_presentation
+author: "Lorenz Walthert (@lorenzwalthert)"
+date: "March 1, 2018"
+output:
+  beamer_presentation: default
+  ioslides_presentation: default
+  slidy_presentation: default
+subtitle: a gentle introduction
 ---
 
 ```{r, echo = FALSE}
-knitr::opts_chunk$set(cache = TRUE)
+knitr::opts_chunk$set(cache = FALSE)
 ```
 
 ## Today's plan
@@ -15,6 +18,14 @@ knitr::opts_chunk$set(cache = TRUE)
 * first hour: Theory + group practice.
 * second hour: (optional participation): Training problems, general questions.
 * This is really just the basics.
+* Let's make this hands on. Help each other.
+* You find these slides here:
+
+## Quick survey
+
+* Who has used RStudio before?
+* Who has used git before?
+* Who has used the command line before?
 
 ## What is git?
 
@@ -25,14 +36,14 @@ knitr::opts_chunk$set(cache = TRUE)
 * A change stored in the VCS = a commit.
 * Every commit has a hash as an id.
 
-```{r, echo=FALSE, out.width="650px"}
+```{r, echo=FALSE, out.width="70%"}
 knitr::include_graphics(here::here("git-tutorial/img/git-tree.png"))
 ```
 
 ## Inspecting differences
 
 
-```{r, echo=FALSE, out.width="750px"}
+```{r, echo=FALSE, out.width="70%"}
 knitr::include_graphics(here::here("git-tutorial/img/git-diff.png"))
 ```
 
@@ -42,7 +53,7 @@ knitr::include_graphics(here::here("git-tutorial/img/git-diff.png"))
 * workflow: change -> save -> add to index -> commit (-> push)
 * important: saved not = committed not = pushed
 
-```{r, echo=FALSE, out.width="750px"}
+```{r, echo=FALSE, out.width="70%"}
 knitr::include_graphics(here::here("git-tutorial/img/git-states.png"))
 ```
 
@@ -54,7 +65,7 @@ Tell me why :-)
 ## Why git?
 * end your copy / paste / save code as backup workflow.
 
-```{r, echo=FALSE, out.width="650px"}
+```{r, echo=FALSE, out.width="60%"}
 knitr::include_graphics(here::here("git-tutorial/img/c-p-hell.png"))
 ```
 
@@ -67,13 +78,13 @@ knitr::include_graphics(here::here("git-tutorial/img/c-p-hell.png"))
 
 * local GUI (e.g. RStudio git tab).
 
-```{r, echo=FALSE, out.width="250px"}
+```{r, echo=FALSE, out.width="20%"}
 knitr::include_graphics(here::here("git-tutorial/img/git-gui.png"))
 ```
 
 * command line.
 
-```{r, echo=FALSE, out.width="350px"}
+```{r, echo=FALSE, out.width="35%"}
 knitr::include_graphics(here::here("git-tutorial/img/git-cmd.png"))
 ```
 
@@ -114,7 +125,7 @@ knitr::include_graphics(here::here("git-tutorial/img/git-cmd.png"))
 
 * have a look at the git tab 
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, out.width="70%"}
 knitr::include_graphics(here::here("git-tutorial/img/rstudio-git.png")) 
 ```
 
@@ -141,7 +152,7 @@ You have three files there:
 
 ## git with RStudio (menu items)
 
-```{r, echo=FALSE, out.width="750px"}
+```{r, echo=FALSE, out.width="70%"}
 knitr::include_graphics(here::here("git-tutorial/img/rstudio-git-menu.png"))
 ```
 
@@ -257,8 +268,8 @@ We'll come back to that.
 
 ## Remote repositories (basics)
 
-```{r, echo=FALSE, out.width = "750px"}
-knitr::include_graphics(here::here("git-tutorial/img/git-remotes.gif"))
+```{r, echo=FALSE, out.width = "70%"}
+knitr::include_graphics(here::here("git-tutorial/img/git-remotes.jpg"))
 ```
 
 * a remote repo is "just another copy" of a repo (potentially in a different
@@ -276,7 +287,7 @@ knitr::include_graphics(here::here("git-tutorial/img/git-remotes.gif"))
 
 ## git with RStudio (menu items)
 
-```{r, echo=FALSE, out.width="750px"}
+```{r, echo=FALSE, out.width="70%"}
 knitr::include_graphics(here::here("git-tutorial/img/rstudio-git-menu.png"))
 ```
 
@@ -412,8 +423,18 @@ Done. See your changes (how?)
 * `$git stash` / `$git stash pop` temporarily discard changes in working dir.
 * `$git merge` / `$git rebase`.
 * `$git branch` to switch between different branches.
-* `$git rebase -i`. Interactive rebase (reorder commit, squash them together).
+* What is `HEAD`? What is `HEAD~1`? And what is `HEAD^1`? Hint: Used in contexts
+  like this: `$git reset HEAD~1 --hard`.
+* How to reset a single file instead of the whole tree?
+* `$git rebase -i`. Interactive rebase (reorder commit, squash them together, 
+  drop them). Hint: try `$git rebase HEAD~2 -i` and have your text editor 
+  skills ready :-) 
 * `$git cherry-pick`. Add an arbitrary commit to your tree.
 * `$git tag`. Anchor commits with tags.
 * `$git diff` (between versions / between files). Hint: Configure a diff tool 
   like merge diff.
+* What does `$git commit --amend`
+* How can you find all files tracked by git?
+* What is `$git diff --cached`? Hint: Add a few files to the index and try 
+  `$git status` before.
+
