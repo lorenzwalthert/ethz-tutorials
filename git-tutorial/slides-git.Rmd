@@ -465,6 +465,14 @@ Done. See your changes (how?)
   `$git status` before.
 
 
+## A word of caution
+
+* it's all in the .git/ folder. Be careful.
+* no diff for binary files (e.g. word, pdf)
+* use gitlfs (extension) for large files (~ > 1MB).
+* git is not a back-up system (unless you use a remote).
+
+
 ## That's all
 
 * Find my personal collection of commands here: 
