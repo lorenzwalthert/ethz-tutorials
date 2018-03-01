@@ -3,3 +3,4 @@
 git-tutorial/slides-git_cache
 *.html
 *.md
+.Rproj.user
