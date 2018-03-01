@@ -15,17 +15,17 @@ knitr::opts_chunk$set(cache = FALSE)
 
 ## Today's plan
 
-* first hour: Theory + group practice.
-* second hour: (optional participation): Training problems, general questions.
-* This is really just the basics.
+* first part (60 min.): Theory + group practice.
+* second part (30 min.): (optional participation): Training problems, general questions.
 * Let's make this hands on. Help each other.
-* You find these slides here:
+* You find these slides here: http://bit.ly/ethz-tutorials -> git tutorial -> pdf
 
 ## Quick survey
 
 * Who has used RStudio before?
 * Who has used git before?
 * Who has used the command line before?
+* Who has used a text editor like VI, VIM, Emacs?
 
 ## What is git?
 
@@ -90,6 +90,10 @@ knitr::include_graphics(here::here("git-tutorial/img/git-cmd.png"))
 
 * web GUI (e.g. GitHub).
 
+```{r, echo=FALSE, out.width="35%"}
+knitr::include_graphics(here::here("git-tutorial/img/github.png"))
+```
+
 ## Pros and Cons
 
 * RStudio git tab: + easy to learn, - limited functionality
@@ -102,7 +106,7 @@ knitr::include_graphics(here::here("git-tutorial/img/git-cmd.png"))
 
 * create new RStudio Project (otherwise you can't use the git GUI)
 * check "create git repository"
-* call it ethz-git-with-rstudio
+* call it `ethz-git-with-rstudio`
 
 ## git with RStudio (create files)
 
@@ -149,6 +153,7 @@ You have three files there:
 * yellow question mark: untracked by git.
 * blue "M": modified.
 * red "D": deleted.
+* not visible: state of file in working dir identical to HEAD
 
 ## git with RStudio (menu items)
 
@@ -160,13 +165,13 @@ Important for now:
 
 * Diff: compare working dir with HEAD
 * Commit: Add changes to tree.
-* clock: History (change log)
+* clock: History (change log).
 
 ## git with RStudio (adding and committing)
 
 * check boxes of you files.
 * Inspect differences with "Diff".
-* Commit them.
+* Commit them (=add to tree).
 
 ## Intermezzo: Good commits (messages)
 
@@ -175,6 +180,7 @@ Important for now:
 ## Intermezzo: Good commits (message)
 
 Example of good commit messages:
+
 * "add missing value analysis to script"
 * "remove unused code"
 
@@ -208,10 +214,11 @@ Example of good commit messages:
 * use tab to auto-complete file names.
 * use star (*) to refer to everyting.
 * I use `$` to refer to terminal commands.
+* Find doc for git online or `$man git [command]`, e.g. `$man git log`.
 
 ## git with the command line (intitialization)
 
-* create a new folder ethz-git-with-rstudio in your home directory.
+* create a new folder `ethz-git-with-cmd` in your home directory.
 * navigate there with the command line.
 * `$git init`
 
@@ -219,13 +226,13 @@ Example of good commit messages:
 
 ## git with the command line (adding files)
 
-* `$touch test.R` to create empty file.
+* `$touch test-cmd.R` to create empty file.
 * add some text & save.
 * `$git status`
 
 ## git with the command line (stage and commit)
 
-*`$git add test-cmd.R`
+* Add file to index with `$git add test-cmd.R`
 * could also do `$git add *` to add all.
 * check the status (how?).
 * `$git commit -m "[commit message here]"`
@@ -248,15 +255,14 @@ Example of good commit messages:
  
 ## Intermezzo: Using a text editor
 
-* How many people have used a text editor like vim or Emacs?
 * You can now edit the commit message.
 * To enter the `insert` mode, press `i`
 * First write the commit message, then leave one line blank and write a 
  description.
 * When done, hit `ESC`
 * Hit `:` (probably `Shift + .` on your keyboard)
-* Then, type `wc` (for write and quit)
-* Type `cq` to cancel and quit.
+* Then, type `wc` (for write and quit).
+* Type `cq` if you want to cancel and quit.
 * Hit `ENTER` to confirm.
 
 We'll come back to that.
@@ -265,6 +271,12 @@ We'll come back to that.
 
 * If you are using the RStudio tab, you can also write the message on the first
   line, then leave one line blank and write the description.
+  
+```{r, echo=FALSE, out.width = "60%"}
+knitr::include_graphics(here::here("git-tutorial/img/rstudio-git-tab-multi-line.png"))
+```
+
+  
 
 ## Remote repositories (basics)
 
@@ -276,8 +288,7 @@ knitr::include_graphics(here::here("git-tutorial/img/git-remotes.jpg"))
   state).
 * remote not the same as a branch! 
 * Never mind about branches we will always use `master`
-* Different branches represent different trees (and can contain different 
-  commits).
+* Different branches represent different trees.
   
 ## Remote repositories (basics)
 
@@ -317,6 +328,18 @@ We'll use GitHub as the server that hosts our remote repository.
 
 Let's have a look: https://github.com/tidyverse/dplyr
 
+## GitHub
+
+You can 
+
+* open issues. 
+* open pull request (ask the maintainer of a repo to pull your changes).
+* merge branches 
+* etc. 
+
+=> Self study.
+
+
 ## Remote repositories (GitHub)
 
 Two scenarios:
@@ -334,10 +357,13 @@ Either way, go to GitHub first.
 
 ## Remote repositories (push)
 
+Let's do it:
+
 * Go to github.com.
-* click "New Repository".
+* click "New Repository". Advised: use same name for repo as your local folder.
 * Follow the instructions by c/p into terminal.
 * reload github.com
+
 => Success?
 
 ## Remote repositories (push)
@@ -348,17 +374,6 @@ Either way, go to GitHub first.
   it `upstream`
 * `git push --set-origin master` maps your `master` branch to the `master` in 
   the remote branch and pushes the repo there.
-
-
-## GitHub
-
-You can 
-* open issues. 
-* open pull request (ask the maintainer of a repo to pull your changes).
-* merge branches 
-* etc. 
-
-=> Self study.
 
 ## Restoring previous versions
 
@@ -401,7 +416,7 @@ Done. See your changes (how?)
 
 * You can also discard all changes in your working directory and return to the
   last commit you made: 
-* `$git reset HEAD --hard`.
+* `$git reset HEAD --hard`
 * In RStudio git tab. Right click on file -> revert.
 
 ## Undo a `$git reset`
@@ -418,11 +433,19 @@ Done. See your changes (how?)
 * find the hash with `$git reflog`.
 * use `$git reset [hash] --hard`
 
-## More to explore
+## More to explore (1)
+
+*May want to use Google / StackOverflow to anwser*:
 
 * `$git stash` / `$git stash pop` temporarily discard changes in working dir.
 * `$git merge` / `$git rebase`.
+* You can commit only parts of a file easily with the RStudio git tab without 
+  adding other parts to the index (and committing). How? Hint: Have a look
+  at the diff.
 * `$git branch` to switch between different branches.
+
+## More to explore (2)
+
 * What is `HEAD`? What is `HEAD~1`? And what is `HEAD^1`? Hint: Used in contexts
   like this: `$git reset HEAD~1 --hard`.
 * How to reset a single file instead of the whole tree?
@@ -433,8 +456,20 @@ Done. See your changes (how?)
 * `$git tag`. Anchor commits with tags.
 * `$git diff` (between versions / between files). Hint: Configure a diff tool 
   like merge diff.
+  
+## More to explore (3)
+
 * What does `$git commit --amend`
 * How can you find all files tracked by git?
 * What is `$git diff --cached`? Hint: Add a few files to the index and try 
   `$git status` before.
 
+
+## That's all
+
+* Find my personal collection of commands here: 
+  http://bit.ly/ethz-tutorials-more-commands
+* Contact me if you are stuck too long: lorwal@me.com
+* Next week: R package develpment. Same time, same room.
+
+**Thanks for attending**
