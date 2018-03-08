@@ -1,9 +1,11 @@
 ---
 title: "R package development tutorial"
-subtitle: "a gentle introduction"
-author: Lorenz Walthert (@lorenzwalthert)
-date: March 7, 2018
-output: ioslides_presentation
+author: "Lorenz Walthert (@lorenzwalthert)"
+date: "March 7, 2018"
+output:
+  beamer_presentation: default
+  ioslides_presentation: default
+subtitle: a gentle introduction
 ---
 
 ```{r, echo = FALSE}
