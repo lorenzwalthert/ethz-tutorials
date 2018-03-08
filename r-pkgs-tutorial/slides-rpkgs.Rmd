@@ -17,6 +17,7 @@ knitr::opts_chunk$set(cache = FALSE)
 * first 60 minutes: Theory + group practice.
 * last 30 minutes: (optional participation): Training problems, general 
   questions.
+* Get slides here: http://bit.ly/ethz-tutorials
   
 ## The impact of this tutorial
 
